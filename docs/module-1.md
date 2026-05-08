@@ -18,6 +18,16 @@ A script that:
 
 This is a simplified version of the automation that Martin's team uses to generate their monthly all-hands deck.
 
+### Learning Outcomes
+
+By the end of this module, participants will be able to:
+
+- **Set up a Clasp project** — Scaffold, push, and run an Apps Script project from the command line.
+- **Read from Google Sheets** — Pull structured data from a spreadsheet using the Sheets API.
+- **Generate Google Slides** — Create a presentation and populate slides programmatically.
+- **Use an AI assistant to write Apps Script** — Describe intent in plain English and iterate on generated code.
+- **Identify automation opportunities** — Recognize repetitive Workspace tasks that Clasp + Apps Script can eliminate.
+
 ---
 
 ## Step 0 — Copy the Roster Spreadsheet
