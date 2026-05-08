@@ -1,0 +1,5 @@
+* [🏠 Home](/)
+* [⚙️ Prerequisites](prerequisites.md)
+* [📋 Workshop Flow](workshop-flow.md)
+* [💻 Module 1 — Build a Slide Deck Generator](module-1.md)
+* [📖 Facilitator Guide](facilitator-guide.md)
