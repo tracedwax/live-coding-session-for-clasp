@@ -216,32 +216,36 @@ function createDeck() {
 
 ## Step 5 — Push and Run
 
-Push your code to Google, then run the function from the browser-based script editor.
+Push your code to Google, then run it. There are two ways — use whichever feels most natural.
 
-<details>
-<summary>💡 Hint: How to push and run</summary>
+### Option A — Let your IDE + AI agent run it (recommended)
 
-**1. Push your code:**
+After pushing, ask your AI tool to run the script for you:
+
+> *"Run the `createDeck` function"*
+
+Your agent will call `clasp run createDeck` on your behalf and show you the output in the terminal. When it finishes, it will log a URL — that's your generated Google Slides deck, already waiting in your Drive.
+
+> **⚠️ First-time only:** `clasp run` requires the Apps Script API to be enabled on your Google account. If the agent hits an error about the API not being enabled, go to [script.google.com/home/usersettings](https://script.google.com/home/usersettings) and toggle it on, then try again.
+
+### Option B — Run it from the browser editor
+
+If you prefer a more hands-on experience, you can run it directly in the [script.google.com](https://script.google.com/home) editor:
+
 ```bash
 clasp push
-```
-
-**2. Open the script editor in your browser:**
-```bash
 clasp open
 ```
-Or navigate directly to [script.google.com](https://script.google.com) and open your "Slide Deck Generator" project.
 
-**3. Run from the editor:**
+Then in the editor:
 - Select `createDeck` from the function dropdown at the top
 - Click **▶ Run**
-- If a permissions prompt appears, review the requested access and click **Allow** — this grants the script access to your Sheets and Slides. Clasp is an approved Google tool, but take a moment to read what you're granting.
-- Check the **Execution log** panel at the bottom of the screen to see the output URL
+- If a permissions prompt appears, review the requested access and click **Allow**
+- Check the **Execution log** panel at the bottom to see the output URL
 
-The logs should show a URL like `https://docs.google.com/presentation/d/...` — open it to see your deck!
+### Viewing your output
 
-> **💡 Note on `clasp run`:** The CLI command `clasp run createDeck` also works, but requires additional setup: a Google Cloud project, the Apps Script API enabled, and a downloaded OAuth credentials file. It's a great power-user feature but is out of scope for this workshop.
-</details>
+Either way, when the script finishes, your generated slide deck will appear in your **Google Drive**. The Execution log (or terminal output) will include a direct link — click it to open the deck immediately.
 
 Open the URL — you should see a slide deck with a title slide and one slide per person from the roster. 🎉
 
