@@ -32,23 +32,23 @@ By the end of this module, participants will be able to:
 
 ## Step 0 — Get Your Starting Materials
 
-Your workshop facilitator will share two links:
+You'll need two things:
 
 ### Roster Spreadsheet
 
-Open the roster spreadsheet link and make your own copy:
+Open the roster spreadsheet and make your own copy:
 
-**File → Make a copy**
+📋 **[Roster Spreadsheet](https://docs.google.com/spreadsheets/d/165d0fwpVxn_xSP0xRyDt9zrVBHEFoGWm_hMmyMUQQSQ/edit?gid=2023017964#gid=2023017964)** → **File → Make a copy**
 
 This gives you your own version of the data to work with. Keep the tab open — you'll need the spreadsheet URL in Step 3.
 
 ### Template Presentation
 
-Open the template presentation link — this is the branded Fireside slide deck your script will copy and populate. **Don't** copy this one; your script will make its own copy automatically. Just grab the presentation ID from the URL (the long string between `/d/` and `/edit`) — you'll need it in Step 4.
+This is the branded Fireside slide deck your script will copy and populate. **Don't** copy this one — your script will make its own copy automatically. Just note the presentation ID for Step 4.
 
-```
-https://docs.google.com/presentation/d/YOUR_TEMPLATE_ID_HERE/edit
-```
+🎨 **[Template Presentation](https://docs.google.com/presentation/d/1EQRvjebRDN5f-oc6ln2jN-WTaLHpHw33mhl9fcvyBLo/edit)**
+
+> **Presentation ID:** `1EQRvjebRDN5f-oc6ln2jN-WTaLHpHw33mhl9fcvyBLo`
 
 ---
 
@@ -134,7 +134,7 @@ Ask your AI to write this function. Give it your spreadsheet URL so it can extra
  * @returns {Object[]} Array of {name, team, manager, email, startDate}
  */
 function getRosterData() {
-  var SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE'; // from your copy's URL
+  var SPREADSHEET_ID = '165d0fwpVxn_xSP0xRyDt9zrVBHEFoGWm_hMmyMUQQSQ'; // from your copy's URL
   var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   var sheet = ss.getSheetByName('Team Roster');
   var data = sheet.getDataRange().getValues();
@@ -192,7 +192,7 @@ Now for the fun part. Ask your AI tool to write a function that:
  * Copy the branded template and populate one slide per person.
  */
 function createDeck() {
-  var TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE'; // from the template presentation URL
+  var TEMPLATE_ID = '1EQRvjebRDN5f-oc6ln2jN-WTaLHpHw33mhl9fcvyBLo'; // from the template presentation URL
   var roster = getRosterData();
   Logger.log('Found ' + roster.length + ' people in the roster.');
 
