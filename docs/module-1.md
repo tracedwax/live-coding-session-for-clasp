@@ -167,19 +167,20 @@ Either way, confirm the output shows a list of names from your roster.
 
 ---
 
-## Step 4 — Create the Slides Presentation
+## Step 4 — Populate the Template Deck
 
 Now for the fun part. Ask your AI tool to write a function that:
 1. Calls your roster function to get the data
-2. Creates a brand-new Google Slides presentation
-3. Sets up a title slide
-4. Adds one slide per person showing their Name, Team, and Manager
-5. Logs the URL of the finished presentation so you can open it
+2. **Copies** the branded template presentation (using `DriveApp.getFileById().makeCopy()`)
+3. Opens the copy and finds the example person slide (the "Kermit" slide)
+4. For each person in the roster, duplicates that slide and fills in their details
+5. Removes the original example slide
+6. Logs the URL of the finished deck
 
 <details>
 <summary>💡 Hint: Sample prompt</summary>
 
-> *"Write an Apps Script function called `createDeck` that: (1) calls `getRosterData()`, (2) creates a new Google Slides presentation called 'Team Roster Deck', (3) adds a title slide with the text 'Team Roster', and (4) adds one slide per person showing their Name, Team, and Manager. Log the URL of the finished presentation."*
+> *"Write an Apps Script function called `createDeck` that: (1) calls `getRosterData()`, (2) copies the template presentation `[paste your template ID here]` using `DriveApp.getFileById(id).makeCopy('Fireside Deck - ' + new Date().toLocaleDateString())`, (3) opens the copy with `SlidesApp.openById()`, (4) finds the person-template slide (slide index 3 — the one with 'Kermit'), (5) for each person in the roster duplicates that slide and replaces the placeholder text with the person's name and team info, (6) removes the original template slide, and (7) logs the URL."*
 
 </details>
 
@@ -188,42 +189,46 @@ Now for the fun part. Ask your AI tool to write a function that:
 
 ```javascript
 /**
- * Create a slide deck from the roster data.
+ * Copy the branded template and populate one slide per person.
  */
 function createDeck() {
+  var TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE'; // from the template presentation URL
   var roster = getRosterData();
   Logger.log('Found ' + roster.length + ' people in the roster.');
 
-  // Create a new presentation
-  var pres = SlidesApp.create('Team Roster Deck');
-  Logger.log('Created presentation: ' + pres.getUrl());
+  // Copy the template presentation
+  var copyFile = DriveApp.getFileById(TEMPLATE_ID)
+    .makeCopy('Fireside Deck - ' + new Date().toLocaleDateString());
+  var pres = SlidesApp.openById(copyFile.getId());
+  Logger.log('Created copy: ' + pres.getUrl());
 
-  // The first slide is auto-created — use it as the title slide
-  var titleSlide = pres.getSlides()[0];
+  // The person-template slide is at index 3 (the "Kermit" example)
+  var templateSlide = pres.getSlides()[3];
 
-  // Set the title text
-  titleSlide.getPlaceholder(SlidesApp.PlaceholderType.TITLE)
-    .asShape().getText().setText('Team Roster');
-  titleSlide.getPlaceholder(SlidesApp.PlaceholderType.SUBTITLE)
-    .asShape().getText().setText('Generated on ' + new Date().toLocaleDateString());
-
-  // Add one slide per person
+  // Create one slide per person by duplicating the template
   roster.forEach(function(person) {
-    var slide = pres.appendSlide(SlidesApp.PredefinedLayout.TITLE_AND_BODY);
+    var newSlide = templateSlide.duplicate();
 
-    // Set the person's name as the slide title
-    slide.getPlaceholder(SlidesApp.PlaceholderType.TITLE)
-      .asShape().getText().setText(person['Name']);
-
-    // Build the body text
-    var body = '';
-    body += '🏢 Team: ' + person['Team'] + '\n';
-    body += '👤 Manager: ' + person['Manager'] + '\n';
-    body += '📧 Email: ' + person['Email'];
-
-    slide.getPlaceholder(SlidesApp.PlaceholderType.BODY)
-      .asShape().getText().setText(body);
+    // Replace placeholder text on all shapes in the slide
+    newSlide.getShapes().forEach(function(shape) {
+      shape.getText().replaceAllText('Kermit the Frog', person['Name']);
+      shape.getText().replaceAllText(
+        'Kermit is joining the leapfrog team',
+        person['Name'] + ' is joining the ' + person['Team'] + ' team'
+      );
+      shape.getText().replaceAllText(
+        'Before Kermit joined our team he was running a show with his friends',
+        'Manager: ' + person['Manager']
+      );
+      shape.getText().replaceAllText(
+        'Fun Fact: Kermit likes waving his arms really fast and drinking tea. Doing both at the same time is not recommended.',
+        'Email: ' + person['Email']
+      );
+    });
   });
+
+  // Remove the original template slide (Kermit)
+  templateSlide.remove();
 
   Logger.log('Done! ' + roster.length + ' slides created.');
   Logger.log('Open your deck: ' + pres.getUrl());
