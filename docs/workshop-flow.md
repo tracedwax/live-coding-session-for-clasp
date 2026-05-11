@@ -10,8 +10,9 @@ A 1-hour session designed for non-engineers who want to automate Google Workspac
 |-------|----------|-----|------|
 | Icebreaker | 5 min | Everyone | Quick intros — who are you, what do you wish you could automate? |
 | Live Demo | 10 min | Martin | Watch the finished automation run end-to-end |
-| Hands-On Build | 35 min | Everyone (breakout rooms) | Build the automation yourself with AI assistance |
-| Show & Tell | 10 min | Everyone | Share what you built, what worked, what surprised you |
+| Module 1 — Guided Build | 15 min | Everyone (breakout rooms) | Build the roster deck with AI assistance |
+| Module 2 — Free Build | 15 min | Everyone (breakout rooms) | Build something of your own with Clasp |
+| Show & Tell + ROTI | 10 min | Everyone | Share what you built; rate your return on time invested |
 
 ---
 
@@ -40,48 +41,64 @@ Martin demonstrates the presentation-creation automation:
 
 ---
 
-## Block 3 — Hands-On Build (35 min)
+## Block 3 — Hands-On Build (30 min)
 
-**Goal:** Participants build the same automation themselves, step by step, using an AI coding assistant.
+**Goal:** Participants build two things — first a guided example, then something of their own.
 
-### Setup (5 min)
-- Open your AI tool (Windsurf, Antigravity, Copilot, etc.)
-- Clone the starter project with `clasp clone`
-- Verify the connection to your Google Sheet
+> **💡 Note for participants:** You haven't “failed” if your script isn’t fully working by the end. The goal is to build intuition for how Clasp and Apps Script work together.
 
-### Build (25 min)
-- Participants work in **breakout rooms** (3-4 people per room)
+### Module 1 — Guided Build (15 min)
+
+Follow [Module 1](module-1.md) to build the roster → slides automation using your AI tool.
+
+- Open your AI tool (Windsurf, Antigravity, Copilot, etc.) and create a new project directory
+- Participants work in **breakout rooms** (3–4 people per room)
 - Each room has a facilitator for troubleshooting
-- AI tool guides the implementation — participants prompt their way through:
-  - Read data from the roster spreadsheet
-  - Create a new Google Slides presentation
-  - Generate slides from the roster data
-  - Add formatting and layout
+- AI tool guides the implementation — participants prompt their way through reading roster data and generating a slide deck
 
-### Checkpoint (5 min)
-- Facilitators check in: did everyone get a working deck?
-- Quick fixes for anyone stuck
+> **🎯 Module 1 success:** You’ve run `createDeck` and seen a generated slide deck URL in the Execution log.
 
-> **🎯 Success criteria:** Every participant has a working script that generates at least a basic slide deck from the roster data.
+### Module 2 — Free Build (15 min)
+
+Follow [Module 2](module-2.md) to build something of your own choosing with Clasp and Google Workspace.
+
+- Stay in breakout rooms — keep collaborating
+- Pick an idea from the suggestions or describe your own to your AI tool
+- Get as far as you can — a working prompt counts as progress
+
+> **🎯 Module 2 success:** You’ve started something new and can describe what it does (or would do).
 
 ---
 
-## Block 4 — Show & Tell (10 min)
+## Block 4 — Show & Tell + ROTI (10 min)
 
-**Goal:** Celebrate wins, share learnings, and spark ideas for what else they could automate.
+**Goal:** Celebrate wins, spark ideas, and capture honest feedback.
 
-- 2-3 volunteers share their screen and show their generated deck
+- 2–3 volunteers share their screen — Module 1 deck, Module 2 attempt, or both
 - Discussion prompts:
-  - *"What was the hardest part?"*
-  - *"What would you add or change?"*
-  - *"What else in your workflow could use this kind of automation?"*
+  - *“What was the hardest part?”*
+  - *“What would you add or change?”*
+  - *“What else in your workflow could use this kind of automation?”*
 - Wrap-up: where to go next, how to keep experimenting
+
+### Return on Time Invested (ROTI)
+
+As we close, ask everyone to answer in chat or aloud:
+
+**Before we wrap up, please drop a quick 0–4 rating for your return on time invested today:**
+- **0 – Useless.** Total waste of time; you’d have been better off skipping it.
+- **1 – Mostly useless.** Some value, but not enough to justify the time spent.
+- **2 – OK.** Enough value to justify showing up, but nothing more.
+- **3 – Mostly useful.** Good use of your time; you learned something new or moved work forward.
+- **4 – Very useful.** Invaluable; you would have missed something important if you weren’t here.
+
+Then: **What is one thing that would move this session up one full point for you?**
 
 ---
 
 ## Facilitator Notes
 
-- **Breakout room ratio:** Aim for 1 facilitator per 3-4 participants
-- **Common failure points:** Clasp auth issues (usually fixed by `clasp login` again), Apps Script API not enabled, corporate account restrictions
-- **Backup plan:** If someone can't get Clasp working, they can pair with a neighbor or use the browser-based Apps Script editor as a fallback
-- **Time buffer:** The hands-on block has 5 min of buffer built in. If the group is moving fast, let them explore extensions (custom formatting, adding images, etc.)
+- **Breakout room ratio:** Aim for 1 facilitator per 3–4 participants
+- **Common failure points:** Clasp auth issues (usually fixed by `clasp login` again), Apps Script API not enabled at [script.google.com/home/usersettings](https://script.google.com/home/usersettings), corporate account restrictions
+- **Backup plan:** If someone can’t get Clasp working, they can pair with a neighbor or use the browser-based Apps Script editor as a fallback
+- **Time buffer:** 5 min available across the session. If Module 1 runs fast, give Module 2 the extra time. If Module 1 runs slow, Module 2 becomes a “here’s what you’d do next” discussion rather than a hands-on build.

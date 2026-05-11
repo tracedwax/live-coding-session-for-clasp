@@ -85,6 +85,8 @@ clasp login
 
 This opens a browser window to authenticate with your Google account. Once complete, Clasp stores credentials locally.
 
+> **⚠️ Permissions prompt:** After signing in, Google will show a screen listing the permissions clasp is requesting — including access to your Drive files, Apps Script projects, deployments, and cloud services. **Click "Allow"** to proceed. These permissions are required for clasp to push and pull scripts on your behalf.
+
 > **💡 Tip:** If you're using a corporate Google Workspace account, make sure your admin hasn't disabled Apps Script API access. If `clasp login` fails, try with a personal Google account first to verify your setup works.
 
 ---

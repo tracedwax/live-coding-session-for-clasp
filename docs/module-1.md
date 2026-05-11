@@ -53,6 +53,8 @@ This should create a new directory with two files:
 - `.clasp.json` — links your local folder to the Apps Script project
 - `appsscript.json` — the project manifest
 
+> **📁 Where to create this:** Before running the commands below, navigate to a folder where you keep your projects. For most participants, a folder inside `Documents` works well. If you're not sure, ask your AI tool: *"Create a `workspace` folder in my Documents and navigate there."* Avoid running this from your Desktop or home directory root.
+
 ```bash
 mkdir slide-deck-generator
 cd slide-deck-generator
@@ -64,7 +66,7 @@ clasp create --title "Slide Deck Generator" --type standalone
 
 ## Step 2 — Add the Right Permissions
 
-Your script needs permission to read Google Sheets and create Slides. Ask your AI tool to update the project manifest (`appsscript.json`) with the correct OAuth scopes for reading spreadsheets, creating presentations, and accessing Drive.
+Your script needs permission to read Google Sheets and create Slides. Ask your AI tool to update the project manifest (`appsscript.json`) with the correct OAuth scopes.
 
 <details>
 <summary>💡 Hint: The scopes you need</summary>
@@ -78,12 +80,13 @@ Your `appsscript.json` should include these scopes:
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "oauthScopes": [
-    "https://www.googleapis.com/auth/spreadsheets.readonly",
-    "https://www.googleapis.com/auth/presentations",
-    "https://www.googleapis.com/auth/drive"
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/presentations"
   ]
 }
 ```
+
+> **⚠️ Heads up — `spreadsheets.readonly` won't work here.** Even though we're only reading data, `SpreadsheetApp.openById()` requires the full `spreadsheets` scope at runtime. The `readonly` variant only works for container-bound scripts (where the sheet is the script's parent file). Also note: you don't need the `drive` scope — `SlidesApp.create()` works with just `presentations`.
 </details>
 
 ---
@@ -138,8 +141,9 @@ function getRosterData() {
 
 ```bash
 clasp push
-clasp run getRosterData
 ```
+
+Then open the script editor (`clasp open`), select `getRosterData` from the function dropdown, click **▶ Run**, and check the **Execution log** panel to confirm it returned a list of names.
 </details>
 
 ---
@@ -212,18 +216,31 @@ function createDeck() {
 
 ## Step 5 — Push and Run
 
-Push your code to Google and run the deck creation function. Check the logs for the URL of your finished presentation.
+Push your code to Google, then run the function from the browser-based script editor.
 
 <details>
-<summary>💡 Hint: Commands to run</summary>
+<summary>💡 Hint: How to push and run</summary>
 
+**1. Push your code:**
 ```bash
 clasp push
-clasp run createDeck
-clasp logs
 ```
 
+**2. Open the script editor in your browser:**
+```bash
+clasp open
+```
+Or navigate directly to [script.google.com](https://script.google.com) and open your "Slide Deck Generator" project.
+
+**3. Run from the editor:**
+- Select `createDeck` from the function dropdown at the top
+- Click **▶ Run**
+- If a permissions prompt appears, review the requested access and click **Allow** — this grants the script access to your Sheets and Slides. Clasp is an approved Google tool, but take a moment to read what you're granting.
+- Check the **Execution log** panel at the bottom of the screen to see the output URL
+
 The logs should show a URL like `https://docs.google.com/presentation/d/...` — open it to see your deck!
+
+> **💡 Note on `clasp run`:** The CLI command `clasp run createDeck` also works, but requires additional setup: a Google Cloud project, the Apps Script API enabled, and a downloaded OAuth credentials file. It's a great power-user feature but is out of scope for this workshop.
 </details>
 
 Open the URL — you should see a slide deck with a title slide and one slide per person from the roster. 🎉
