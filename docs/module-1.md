@@ -101,7 +101,9 @@ Grab your spreadsheet ID from the URL — it's the long string between `/d/` and
 https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID_HERE/edit
 ```
 
-Ask your AI to write this function. Give it your spreadsheet URL so it can extract the ID. Then push and run it to make sure it reads the data correctly.
+Ask your AI to write this function. Give it your spreadsheet URL so it can extract the ID. Then push and run it to confirm it reads the data correctly.
+
+> **💡 "Run" means one of two things throughout this guide:** either ask your AI agent to run the CLI command for you, or open the browser editor and click ▶ Run. Both work — pick one and stick with it. Step 5 explains both options in full.
 
 <details>
 <summary>💡 Hint: Sample prompt</summary>
@@ -143,7 +145,11 @@ function getRosterData() {
 clasp push
 ```
 
-Then open the script editor (`clasp open`), select `getRosterData` from the function dropdown, click **▶ Run**, and check the **Execution log** panel to confirm it returned a list of names.
+**Option A — agent CLI:** Ask your AI tool: *"Run the `getRosterData` function"*. It will call `clasp run` and show the output in the terminal.
+
+**Option B — browser editor:** Run `clasp open`, select `getRosterData` from the function dropdown, click **▶ Run**, and check the **Execution log** panel at the bottom.
+
+Either way, confirm the output shows a list of names from your roster.
 </details>
 
 ---
