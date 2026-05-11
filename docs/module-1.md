@@ -78,7 +78,7 @@ clasp create --title "Slide Deck Generator" --type standalone
 
 ## Step 2 — Add the Right Permissions
 
-Your script needs permission to read Google Sheets and create Slides. Ask your AI tool to update the project manifest (`appsscript.json`) with the correct OAuth scopes.
+Your script needs permission to read Google Sheets, work with Slides, and copy files in Drive. Ask your AI tool to update the project manifest (`appsscript.json`) with the correct OAuth scopes.
 
 <details>
 <summary>💡 Hint: The scopes you need</summary>
@@ -99,7 +99,7 @@ Your `appsscript.json` should include these scopes:
 }
 ```
 
-> **⚠️ Heads up — `spreadsheets.readonly` won't work here.** Even though we're only reading data, `SpreadsheetApp.openById()` requires the full `spreadsheets` scope at runtime. The `readonly` variant only works for container-bound scripts (where the sheet is the script's parent file). Also note: you don't need the `drive` scope — `SlidesApp.create()` works with just `presentations`.
+> **⚠️ Heads up — `spreadsheets.readonly` won't work here.** Even though we're only reading data, `SpreadsheetApp.openById()` requires the full `spreadsheets` scope at runtime. The `readonly` variant only works for container-bound scripts (where the sheet is the script's parent file). The `drive` scope is needed because your script uses `DriveApp.getFileById().makeCopy()` to copy the template presentation.
 </details>
 
 ---
