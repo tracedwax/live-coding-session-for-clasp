@@ -81,7 +81,8 @@ Your `appsscript.json` should include these scopes:
   "runtimeVersion": "V8",
   "oauthScopes": [
     "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/presentations"
+    "https://www.googleapis.com/auth/presentations",
+    "https://www.googleapis.com/auth/drive"
   ]
 }
 ```
