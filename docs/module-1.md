@@ -1,6 +1,6 @@
 # 💻 Module 1 — Build a Slide Deck Generator
 
-In this module, you'll build a Google Apps Script that reads employee data from a spreadsheet and automatically creates a Google Slides presentation — one slide per person.
+In this module, you'll build a Google Apps Script that reads employee data from a spreadsheet and populates a branded Google Slides template — one slide per person, fully formatted.
 
 Your AI tool will do the heavy lifting. Describe what you want, and let it write the code for you.
 
@@ -12,9 +12,9 @@ Your AI tool will do the heavy lifting. Describe what you want, and let it write
 
 A script that:
 1. Reads names, roles, and teams from a roster spreadsheet
-2. Creates a brand-new Google Slides presentation
-3. Adds one slide per person with their info
-4. Gives you a link to the finished deck
+2. Copies a branded slide deck template
+3. Duplicates the person-template slide for each roster entry and fills in their details
+4. Gives you a link to the finished deck — formatted and ready to present
 
 This is a simplified version of the automation that Martin's team uses to generate their monthly all-hands deck.
 
@@ -271,7 +271,7 @@ Then in the editor:
 
 Either way, when the script finishes, your generated slide deck will appear in your **Google Drive**. The Execution log (or terminal output) will include a direct link — click it to open the deck immediately.
 
-Open the URL — you should see a slide deck with a title slide and one slide per person from the roster. 🎉
+Open the URL — you should see a copy of the branded Fireside deck with one slide per person from the roster, fully populated. 🎉
 
 ---
 
@@ -291,8 +291,8 @@ Add a section header slide that says "New Joiners" before listing people who sta
 ### 📊 Anniversary Highlights
 Add a final slide summarizing work anniversaries — people whose start date month matches the current month.
 
-### 🖼️ Custom Layout
-Instead of using the default title-and-body layout, create slides with the name as a large centered title and the details in a smaller text box below.
+### 🖼️ Update the Title Slide
+Change the title slide text to include the current month and year — so each generated deck is dated automatically.
 
 ---
 
@@ -301,8 +301,8 @@ Instead of using the default title-and-body layout, create slides with the name 
 You built a real automation that:
 
 - ✅ Reads live data from a Google Sheet
-- ✅ Creates a Google Slides presentation from scratch
-- ✅ Generates one slide per person — no copy-paste needed
+- ✅ Copies a branded slide deck template
+- ✅ Populates one slide per person — no copy-paste needed
 - ✅ Runs in seconds instead of hours
 
 This is the same pattern behind Martin's monthly all-hands deck generator, event programs, onboarding decks, and dozens of other Workspace automations.
