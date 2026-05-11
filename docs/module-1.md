@@ -30,13 +30,25 @@ By the end of this module, participants will be able to:
 
 ---
 
-## Step 0 — Copy the Roster Spreadsheet
+## Step 0 — Get Your Starting Materials
 
-Your workshop facilitator will share a link to a Google Sheets roster. Open the link and make your own copy:
+Your workshop facilitator will share two links:
+
+### Roster Spreadsheet
+
+Open the roster spreadsheet link and make your own copy:
 
 **File → Make a copy**
 
-This gives you your own version of the spreadsheet to work with. Keep the tab open — you'll need the spreadsheet URL in a later step.
+This gives you your own version of the data to work with. Keep the tab open — you'll need the spreadsheet URL in Step 3.
+
+### Template Presentation
+
+Open the template presentation link — this is the branded Fireside slide deck your script will copy and populate. **Don't** copy this one; your script will make its own copy automatically. Just grab the presentation ID from the URL (the long string between `/d/` and `/edit`) — you'll need it in Step 4.
+
+```
+https://docs.google.com/presentation/d/YOUR_TEMPLATE_ID_HERE/edit
+```
 
 ---
 
